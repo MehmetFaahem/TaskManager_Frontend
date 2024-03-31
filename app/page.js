@@ -27,7 +27,14 @@ const HomePage = () => {
         <h1 className="text-2xl font-bold text-gray-800">Task manager</h1>
         {loggedin ? (
           <div>
-            <button className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+            <button
+              onClick={() =>
+                router.push(
+                  "https://github.com/MehmetFaahem/TaskManager_Frontend"
+                )
+              }
+              className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            >
               Github
             </button>
             <button
