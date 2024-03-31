@@ -29,6 +29,8 @@ const Tasks = ({ tasks }) => {
               taskId={task._id}
               opened={opened}
               onClose={() => setOpened(false)}
+              title={task.title}
+              description={task.description}
             />
             <div className="flex justify-between">
               <button

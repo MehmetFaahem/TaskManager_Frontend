@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const EditTaskModal = ({ taskId, onClose, opened }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+const EditTaskModal = ({ taskId, onClose, opened, title, description }) => {
+  const [title, setTitle] = useState(title);
+  const [description, setDescription] = useState(description);
 
   const handleSubmit = async () => {
     const token = await localStorage.getItem("token");
