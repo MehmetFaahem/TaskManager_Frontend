@@ -37,16 +37,27 @@ const TasksPage = () => {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const token = await localStorage.getItem("token");
-      const response = await axios.get(
-        `https://tmbackend.vercel.app/api/tasks?page=${currentPage}&pageSize=${pageSize}`,
-        {
-          headers: {
-            tokenHeaderKey: token,
-          },
+      try {
+        const token = await localStorage.getItem("token");
+        const response = await axios.get(
+          `https://tmbackend.vercel.app/api/tasks?page=${currentPage}&pageSize=${pageSize}`,
+          {
+            headers: {
+              tokenHeaderKey: token,
+            },
+          }
+        );
+        setTasks(response.data);
+      } catch (error) {
+        if (
+          error.response.data.msg == "Token is not valid" ||
+          "No token, authorization denied"
+        ) {
+          alert("Sorry Your Login Session Is Expired");
+          localStorage.removeItem("token");
+          router.push("/login");
         }
-      );
-      setTasks(response.data);
+      }
     };
     fetchTasks();
   }, [tasks]);

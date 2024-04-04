@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const EditTaskModal = ({ taskId, onClose, opened, task }) => {
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
+const EditTaskModal = ({ taskID, taskTitle, taskDesc, onClose, opened }) => {
+  const [title, setTitle] = useState(taskTitle);
+  const [description, setDescription] = useState(taskDesc);
 
   const handleSubmit = async () => {
     const token = await localStorage.getItem("token");
     try {
       await axios.put(
-        `https://tmbackend.vercel.app/api/tasks/${taskId}`,
+        `https://tmbackend.vercel.app/api/tasks/${taskID}`,
         {
           title,
           description,
@@ -22,6 +22,7 @@ const EditTaskModal = ({ taskId, onClose, opened, task }) => {
       );
       onClose();
     } catch (error) {
+      alert("Please write properly when updating");
       console.error("Error updating task:", error);
     }
   };

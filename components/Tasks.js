@@ -4,6 +4,9 @@ import EditTaskModal from "./editTaskModal";
 
 const Tasks = ({ tasks }) => {
   const [opened, setOpened] = useState(false);
+  const [taskID, setTaskID] = useState();
+  const [taskTitle, setTaskTitle] = useState();
+  const [taskDesc, setTaskDesc] = useState();
   const handleDelete = async (id) => {
     const token = await localStorage.getItem("token");
     try {
@@ -26,14 +29,21 @@ const Tasks = ({ tasks }) => {
             <p className="text-gray-700 mb-4">{task.description}</p>
 
             <EditTaskModal
-              taskId={task._id}
+              taskID={taskID}
+              taskTitle={taskTitle}
+              taskDesc={taskDesc}
               opened={opened}
               onClose={() => setOpened(false)}
-              task={task}
             />
             <div className="flex justify-between">
               <button
-                onClick={() => setOpened(true)}
+                onClick={async () => {
+                  await setTaskID(task._id);
+                  await setTaskTitle(task.title);
+                  await setTaskDesc(task.description);
+
+                  setOpened(true);
+                }}
                 className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mr-2"
               >
                 Edit
