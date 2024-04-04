@@ -33,6 +33,14 @@ const CreateTaskForm = () => {
       setLoading(false);
       router.push("/tasks");
     } catch (error) {
+      if (
+        error.response.data.msg == "Token is not valid" ||
+        "No token, authorization denied"
+      ) {
+        alert("Sorry Your Login Session Is Expired");
+        localStorage.removeItem("token");
+        router.push("/login");
+      }
       console.error("Error creating task:", error);
     }
   };
