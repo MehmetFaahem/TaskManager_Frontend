@@ -66,8 +66,7 @@ const HomePage = () => {
           Welcome to Task Manager
         </h2>
         <p className="text-xl w-full md:w-[60%] lg:w-[50%] text-center text-white/80 mb-12">
-          This task manager is created as coding test for MERN Stack Developer
-          Internship. Here backend created with Express.JS and Frontend created
+          This task manager is created as coding test for MERN Stack Developer position. Here backend created with Express.JS and Frontend created
           with Next.JS 14. Database: MongoDB
         </p>
 
@@ -184,7 +183,7 @@ const HomePage = () => {
         )}
       </main>
       <footer className="w-full text-center text-white/60 py-4 bg-[#252d6d]/90 backdrop-blur-sm">
-        <p>&copy; 2024 Task Manager. All rights reserved.</p>
+        <p>&copy; 2025 Task Manager. All rights reserved.</p>
       </footer>
     </div>
   );
