@@ -79,23 +79,45 @@ const TasksPage = () => {
         </button>
       </div>
       <div className="w-full md:w-2/3 lg:w-1/2 card">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">Tasks</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">
+          Tasks
+        </h2>
         {tasks.length < 1 ? (
-          <h2 className="font-bold text-xl text-center py-[20%] text-white/80">
-            There are no tasks created yet. Please create at least one task first.
+          <h2 className="font-bold text-xl text-center py-[20%] text-white/80 flex flex-col items-center justify-center gap-4">
+            <svg
+              class="size-[200px] text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+                d="M5 7h14M5 12h14M5 17h14"
+              />
+            </svg>
+            There are no tasks created yet. Please create at least one task
+            first.
           </h2>
         ) : (
           <Tasks tasks={tasks} />
         )}
       </div>
       <h5 className="mt-4 text-white/60 text-center">
-        Page Item Limit is only 2. If your task length is greater than 2, use pagination
+        Page Item Limit is only 2. If your task length is greater than 2, use
+        pagination
       </h5>
       <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`btn-primary ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`btn-primary ${
+            currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+          }`}
         >
           Previous
         </button>

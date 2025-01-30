@@ -17,17 +17,17 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply w-full flex justify-center items-center text-white px-4 py-2 rounded-lg bg-[#252d6d] hover:bg-[#1f2758] transition-colors duration-200;
+    @apply px-6 py-3 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-[#252d6d] to-[#1f2758] hover:from-[#1f2758] hover:to-[#252d6d] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
   }
-  
+
   .input-field {
-    @apply bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-white/40;
+    @apply w-full bg-white/5 border-2 border-white/20 rounded-xl px-5 py-3 text-white placeholder-white/40 focus:border-white/40 focus:outline-none transition-all duration-300;
   }
-  
+
   .card {
-    @apply bg-[#131938]/80 border border-white/10 rounded-lg p-6 shadow-lg;
+    @apply bg-gradient-to-br from-[#131938]/90 to-[#252d6d]/90 border border-white/20 rounded-2xl p-8 shadow-xl backdrop-blur-sm;
   }
-  
+
   .nav-link {
     @apply text-white/80 hover:text-white transition-colors duration-200;
   }
@@ -37,4 +37,21 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Add custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
