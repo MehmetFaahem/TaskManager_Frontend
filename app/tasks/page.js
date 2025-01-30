@@ -107,30 +107,28 @@ const TasksPage = () => {
           <Tasks tasks={tasks} />
         )}
       </div>
-      <h5 className="mt-4 text-white/60 text-center">
-        Page Item Limit is only 2. If your task length is greater than 2, use
-        pagination
-      </h5>
-      <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`btn-primary ${
-            currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          Previous
-        </button>
-        <div className="flex flex-wrap justify-center gap-2">
-          {renderPageNumbers()}
+      {tasks.length > 2 && (
+        <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`btn-primary ${
+              currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            Previous
+          </button>
+          <div className="flex flex-wrap justify-center gap-2">
+            {renderPageNumbers()}
+          </div>
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="btn-primary"
+          >
+            Next
+          </button>
         </div>
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          className="btn-primary"
-        >
-          Next
-        </button>
-      </div>
+      )}
     </div>
   );
 };
