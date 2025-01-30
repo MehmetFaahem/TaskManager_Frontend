@@ -22,9 +22,9 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex flex-col justify-center items-center py-6">
-      <header className="w-full flex justify-between items-center px-6 py-4 bg-white shadow-md">
-        <h1 className="text-2xl font-bold text-gray-800">Task manager</h1>
+    <div className="min-h-screen bg-[#131938] flex flex-col">
+      <header className="w-full flex justify-between items-center px-6 py-4 bg-[#252d6d]/90 backdrop-blur-sm">
+        <h1 className="text-2xl font-bold text-white">Task Manager</h1>
         {loggedin ? (
           <div>
             <button
@@ -33,7 +33,7 @@ const HomePage = () => {
                   "https://github.com/MehmetFaahem/TaskManager_Frontend"
                 )
               }
-              className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="btn-primary mr-4"
             >
               Github
             </button>
@@ -42,21 +42,21 @@ const HomePage = () => {
                 localStorage.removeItem("token");
                 location.reload();
               }}
-              className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="btn-primary"
             >
-              log out
+              Log Out
             </button>
           </div>
         ) : (
           <div>
             <button
-              className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="btn-primary mr-4"
               onClick={handleLoginClick}
             >
               Login
             </button>
             <button
-              className="inline-block px-4 py-2 text-sm font-medium text-blue-500 bg-white rounded-md border border-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:text-white focus:bg-blue-600"
+              className="px-4 py-2 text-sm font-medium text-white border border-white/20 rounded-lg hover:bg-white/10 transition-colors duration-200"
               onClick={handleRegisterClick}
             >
               Register
@@ -64,59 +64,61 @@ const HomePage = () => {
           </div>
         )}
       </header>
-      <main className="flex flex-col items-center justify-center flex-1">
-        <h2 className="text-3xl font-bold text-white mb-6">
+      <main className="flex flex-col items-center justify-center flex-1 px-4">
+        <h2 className="text-4xl font-bold text-white mb-6">
           Welcome to Task Manager
         </h2>
-        <p className="text-xl w-[50%] text-center text-white mb-12">
+        <p className="text-xl w-full md:w-[60%] lg:w-[50%] text-center text-white/80 mb-12">
           This task manager is created as coding test for MERN Stack Developer
           Internship. Here backend created with Express.JS and Frontend created
           with Next.JS 14. Database: MongoDB
         </p>
 
         {loggedin ? (
-          <div className="flex space-x-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div
               onClick={() => router.push("/create")}
-              className="w-48 hover:bg-blue-300 transition-all cursor-pointer h-48 bg-white rounded-lg shadow-md flex justify-center items-center"
+              className="w-48 hover:bg-[#252d6d] transition-all cursor-pointer h-48 bg-[#131938] border border-white/10 rounded-lg shadow-lg flex justify-center items-center group"
             >
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-lg font-semibold text-white group-hover:scale-105 transition-transform">
                 Create Tasks
               </p>
             </div>
             <div
               onClick={() => router.push("/tasks")}
-              className="w-48 hover:bg-blue-300 transition-all cursor-pointer h-48 bg-white rounded-lg shadow-md flex justify-center items-center"
+              className="w-48 hover:bg-[#252d6d] transition-all cursor-pointer h-48 bg-[#131938] border border-white/10 rounded-lg shadow-lg flex justify-center items-center group"
             >
-              <p className="text-lg font-semibold text-gray-800">Read Tasks</p>
+              <p className="text-lg font-semibold text-white group-hover:scale-105 transition-transform">
+                Read Tasks
+              </p>
             </div>
             <div
               onClick={() => router.push("/tasks")}
-              className="w-48 hover:bg-blue-300 transition-all cursor-pointer h-48 bg-white rounded-lg shadow-md flex justify-center items-center"
+              className="w-48 hover:bg-[#252d6d] transition-all cursor-pointer h-48 bg-[#131938] border border-white/10 rounded-lg shadow-lg flex justify-center items-center group"
             >
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-lg font-semibold text-white group-hover:scale-105 transition-transform">
                 Update Tasks
               </p>
             </div>
             <div
               onClick={() => router.push("/tasks")}
-              className="w-48 hover:bg-blue-300 transition-all cursor-pointer h-48 bg-white rounded-lg shadow-md flex justify-center items-center"
+              className="w-48 hover:bg-[#252d6d] transition-all cursor-pointer h-48 bg-[#131938] border border-white/10 rounded-lg shadow-lg flex justify-center items-center group"
             >
-              <p className="text-lg font-semibold text-gray-800">
+              <p className="text-lg font-semibold text-white group-hover:scale-105 transition-transform">
                 Delete Tasks
               </p>
             </div>
           </div>
         ) : (
-          <div>
+          <div className="space-x-4">
             <button
-              className="inline-block px-4 py-2 mr-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="btn-primary"
               onClick={handleLoginClick}
             >
               Login
             </button>
             <button
-              className="inline-block px-4 py-2 text-sm font-medium text-blue-500 bg-white rounded-md border border-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:text-white focus:bg-blue-600"
+              className="px-4 py-2 text-sm font-medium text-white border border-white/20 rounded-lg hover:bg-white/10 transition-colors duration-200"
               onClick={handleRegisterClick}
             >
               Register
@@ -124,7 +126,7 @@ const HomePage = () => {
           </div>
         )}
       </main>
-      <footer className="w-full text-center text-gray-300 py-4 bg-gray-800">
+      <footer className="w-full text-center text-white/60 py-4 bg-[#252d6d]/90 backdrop-blur-sm">
         <p>&copy; 2024 Task Manager. All rights reserved.</p>
       </footer>
     </div>

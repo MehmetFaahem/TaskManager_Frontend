@@ -3,27 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --primary-dark-blue: 19, 25, 56;
+  --primary-white: 255, 255, 255;
+  --accent-blue: 37, 49, 109;
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 19, 25, 56;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer components {
+  .btn-primary {
+    @apply w-full flex justify-center items-center text-white px-4 py-2 rounded-lg bg-[#252d6d] hover:bg-[#1f2758] transition-colors duration-200;
+  }
+  
+  .input-field {
+    @apply bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-white/40;
+  }
+  
+  .card {
+    @apply bg-[#131938]/80 border border-white/10 rounded-lg p-6 shadow-lg;
+  }
+  
+  .nav-link {
+    @apply text-white/80 hover:text-white transition-colors duration-200;
+  }
 }
 
 @layer utilities {

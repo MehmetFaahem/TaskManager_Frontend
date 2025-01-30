@@ -22,10 +22,10 @@ const TasksPage = () => {
         <button
           key={i}
           onClick={() => handlePageClick(i)}
-          className={`mx-1 px-3 py-1 rounded-md ${
+          className={`mx-1 px-3 py-1 rounded-lg ${
             currentPage === i
-              ? "bg-blue-500 text-white"
-              : "bg-gray-300 text-gray-700 hover:bg-gray-400 hover:text-gray-800"
+              ? "bg-[#252d6d] text-white"
+              : "bg-[#131938] text-white/80 hover:bg-[#252d6d] hover:text-white"
           }`}
         >
           {i}
@@ -63,50 +63,48 @@ const TasksPage = () => {
   }, [tasks]);
 
   return (
-    <div className="min-h-screen min-w-full bg-gray-100 flex flex-col justify-center items-center py-6">
-      <div className="flex sticky space-x-4 mb-4">
+    <div className="min-h-screen min-w-full bg-[#131938] flex flex-col justify-center items-center py-6 px-4">
+      <div className="flex flex-col sm:flex-row sticky space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
         <button
           onClick={() => router.push("/")}
-          className="mt-2 w-[300px] bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+          className="btn-primary w-full sm:w-[300px]"
         >
           HomePage
         </button>
         <button
           onClick={() => router.push("/create")}
-          className="mt-2 w-[300px] bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+          className="btn-primary w-full sm:w-[300px]"
         >
           Create Task
         </button>
       </div>
-      <div className="w-full md:w-1/2 bg-white shadow-md rounded-md p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">Tasks</h2>
+      <div className="w-full md:w-2/3 lg:w-1/2 card">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Tasks</h2>
         {tasks.length < 1 ? (
-          <h2 className="font-bold text-2xl text-center py-[20%]">
-            There is no enough task was created. Please create at least number
-            of task first.
+          <h2 className="font-bold text-xl text-center py-[20%] text-white/80">
+            There are no tasks created yet. Please create at least one task first.
           </h2>
         ) : (
           <Tasks tasks={tasks} />
         )}
       </div>
-      <h5 className="mt-1">
-        Page Item Limit is only 2, If your task length is greater than 2 then
-        use paginate
+      <h5 className="mt-4 text-white/60 text-center">
+        Page Item Limit is only 2. If your task length is greater than 2, use pagination
       </h5>
-      <div className="mt-4 flex justify-center">
+      <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+          className={`btn-primary ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           Previous
         </button>
-        <div className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {renderPageNumbers()}
         </div>
         <button
           onClick={() => setCurrentPage(currentPage + 1)}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="btn-primary"
         >
           Next
         </button>
